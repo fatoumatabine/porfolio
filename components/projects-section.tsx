@@ -1,51 +1,79 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github, Users, CheckCircle, MessageSquare } from "lucide-react"
+import { ExternalLink, Github, HeartPulse, Users, BriefcaseBusiness, ServerCog, Smartphone } from "lucide-react"
 
 export function ProjectsSection() {
   const projects = [
     {
-      title: "Système de Gestion des Apprenants",
+      title: "Santé SN",
       description:
-        "Application web complète pour la gestion des étudiants avec fonctionnalités CRUD, interface utilisateur intuitive, système de recherche et filtrage avancé des données.",
-      technologies: ["JavaScript", "HTML5", "CSS3", "LocalStorage"],
+        "Application de télémédecine pour mettre en relation patients et médecins, gérer les consultations en ligne, les rendez-vous et le suivi médical.",
+      technologies: ["Node.js", "Express.js", "React.js", "MySQL", "API REST"],
       features: [
-        "Gestion complète des profils apprenants",
-        "Fonctionnalités CRUD avancées",
-        "Système de recherche et filtrage",
-        "Interface utilisateur intuitive",
+        "Mise en relation patients et médecins",
+        "Authentification sécurisée",
+        "Gestion des rendez-vous et historique médical",
+        "Architecture REST API avec interface React.js",
+      ],
+      icon: <HeartPulse className="w-8 h-8" />,
+      iconClass: "bg-rose-50 text-rose-700 border-rose-100",
+    },
+    {
+      title: "maxit_sn / maxit_odc",
+      description:
+        "Applications dynamiques intégrant des API externes, développées dans le cadre de Sonatel Academy et de l'Orange Digital Center.",
+      technologies: ["React.js", "Laravel API", "Redux", "MySQL"],
+      features: [
+        "Intégration d'API externes",
+        "Front-end React dynamique",
+        "Gestion d'état avec Redux",
+        "Connexion à une API Laravel",
+      ],
+      icon: <Smartphone className="w-8 h-8" />,
+      iconClass: "bg-rose-50 text-rose-700 border-rose-100",
+    },
+    {
+      title: "gestion-RH",
+      description:
+        "Application web de gestion du personnel avec suivi des employés, présences, congés, salaires et tableau de bord administrateur.",
+      technologies: ["Laravel", "MySQL", "Bootstrap", "PHP"],
+      features: [
+        "Gestion des employés",
+        "Suivi des présences et congés",
+        "Gestion des salaires",
+        "Tableau de bord administrateur",
+      ],
+      icon: <BriefcaseBusiness className="w-8 h-8" />,
+      iconClass: "bg-rose-50 text-rose-700 border-rose-100",
+    },
+    {
+      title: "fatoumata-apisylla",
+      description:
+        "Application Laravel de gestion d'utilisateurs et d'API avec authentification sécurisée, opérations CRUD complètes et tests API.",
+      technologies: ["PHP", "Laravel", "MySQL", "Blade", "Postman"],
+      features: [
+        "Authentification sécurisée",
+        "CRUD complet",
+        "Tests d'API avec Postman",
+        "Interface Blade connectée au back-end",
       ],
       icon: <Users className="w-8 h-8" />,
-      color: "from-blue-500 to-cyan-500",
+      iconClass: "bg-rose-50 text-rose-700 border-rose-100",
     },
     {
-      title: "Application de Gestion des Tâches",
+      title: "api-ecsa-odc / Application-Daf",
       description:
-        "Gestionnaire de tâches interactif type To-Do List avec système de priorités, catégorisation des tâches et interface responsive optimisée.",
-      technologies: ["JavaScript (ES6+)", "HTML5", "CSS3", "DOM Manipulation"],
+        "Projets collaboratifs centrés sur la conception, la structuration et l'intégration d'API REST documentées.",
+      technologies: ["Laravel", "PHP", "Postman", "GitHub"],
       features: [
-        "Ajout, modification, suppression des tâches",
-        "Système de priorités et catégories",
-        "Interface responsive",
-        "Expérience utilisateur optimisée",
+        "Conception d'API REST",
+        "Structuration back-end",
+        "Documentation des endpoints",
+        "Travail collaboratif avec GitHub",
       ],
-      icon: <CheckCircle className="w-8 h-8" />,
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      title: "Clone WhatsApp Web",
-      description:
-        "Reproduction fidèle de l'interface utilisateur de WhatsApp Web avec messagerie en temps réel simulée, gestion des contacts et historique des conversations.",
-      technologies: ["JavaScript", "HTML5", "CSS3", "WebSocket (simulation)"],
-      features: [
-        "Interface fidèle à WhatsApp Web",
-        "Messagerie temps réel (simulation)",
-        "Gestion des contacts",
-        "Historique des conversations",
-      ],
-      icon: <MessageSquare className="w-8 h-8" />,
-      color: "from-purple-500 to-pink-500",
+      icon: <ServerCog className="w-8 h-8" />,
+      iconClass: "bg-rose-50 text-rose-700 border-rose-100",
     },
   ]
 
@@ -53,7 +81,7 @@ export function ProjectsSection() {
     <section id="projets" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl font-bold text-amber-600 mb-4">Projets Récents</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-rose-700 mb-4">Projets Récents</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
             Découvrez une sélection de mes réalisations qui démontrent ma maîtrise des technologies web modernes et mon
             approche centrée utilisateur.
@@ -64,15 +92,15 @@ export function ProjectsSection() {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className={`group card-hover transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm overflow-hidden animate-fade-in-up animate-delay-${(index + 2) * 100}`}
+              className={`group card-hover transition-all duration-300 border border-rose-100 bg-card overflow-hidden animate-fade-in-up animate-delay-${(index + 2) * 100} hover:border-rose-200 hover:shadow-xl hover:shadow-rose-100/70`}
             >
               <CardHeader className="pb-4">
                 <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${project.color} p-4 mb-4 group-hover:scale-110 transition-transform animate-scale-in animate-glow`}
+                  className={`w-16 h-16 rounded-lg border ${project.iconClass} p-4 mb-4 group-hover:scale-105 transition-transform animate-scale-in`}
                 >
-                  <div className="text-white">{project.icon}</div>
+                  <div>{project.icon}</div>
                 </div>
-                <CardTitle className="text-xl text-card-foreground group-hover:text-amber-600 transition-colors">
+                <CardTitle className="text-xl text-card-foreground group-hover:text-rose-700 transition-colors">
                   {project.title}
                 </CardTitle>
               </CardHeader>
@@ -89,7 +117,7 @@ export function ProjectsSection() {
                         className="text-sm text-muted-foreground flex items-start gap-2 animate-fade-in-left"
                         style={{ animationDelay: `${featureIndex * 0.1 + 0.5}s` }}
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-amber-600 mt-2 flex-shrink-0 animate-pulse"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-2 flex-shrink-0 animate-pulse"></div>
                         {feature}
                       </li>
                     ))}
@@ -113,13 +141,17 @@ export function ProjectsSection() {
                 </div>
 
                 <div className="flex gap-2 pt-4">
-                  <Button size="sm" variant="outline" className="flex-1 bg-transparent btn-animate hover-lift">
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
+                  <Button size="sm" variant="outline" asChild className="flex-1 bg-transparent btn-animate hover-lift">
+                    <a href="https://github.com/fatoumatabine" target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </a>
                   </Button>
-                  <Button size="sm" className="flex-1 bg-amber-500 hover:bg-amber-600 btn-animate hover-lift">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Demo
+                  <Button size="sm" asChild className="flex-1 bg-rose-600 hover:bg-rose-700 text-white btn-animate hover-lift">
+                    <a href="https://porfolio-sigma-rosy.vercel.app" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Demo
+                    </a>
                   </Button>
                 </div>
               </CardContent>
@@ -129,7 +161,7 @@ export function ProjectsSection() {
 
         <div className="text-center mt-12 animate-fade-in-up animate-delay-500">
           <Button variant="outline" size="lg" asChild className="btn-animate hover-lift bg-transparent">
-            <a href="https://github.com/fatoumatbinetousylla" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/fatoumatabine" target="_blank" rel="noopener noreferrer">
               <Github className="w-5 h-5 mr-2" />
               Voir tous mes projets sur GitHub
             </a>

@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowDown, Github, Linkedin, Mail, MapPin, Phone, Download } from "lucide-react"
+import { ArrowDown, Github, Linkedin, Mail, MapPin, Phone, Download, Code2, Smartphone, Server } from "lucide-react"
 import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/translations"
@@ -9,89 +9,72 @@ import { translations } from "@/lib/translations"
 export function HeroSection() {
   const { language } = useLanguage()
   const t = translations[language]
+  const highlights = [
+    { icon: <Code2 className="h-4 w-4" />, label: "React.js" },
+    { icon: <Server className="h-4 w-4" />, label: "Laravel / Node.js" },
+    { icon: <Smartphone className="h-4 w-4" />, label: "Flutter" },
+  ]
 
   return (
-    <section
-      id="accueil"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-amber-100 via-amber-50 to-orange-200"
-    >
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Large geometric shapes */}
-        <div className="absolute top-20 right-20 w-32 h-32 bg-white/10 rounded-full animate-float"></div>
-        <div className="absolute bottom-40 left-10 w-24 h-24 bg-white/5 rotate-45 animate-float delay-1000"></div>
-        <div className="absolute top-1/2 right-10 w-16 h-16 bg-white/10 rounded-full animate-pulse"></div>
+    <section id="accueil" className="relative min-h-screen overflow-hidden bg-rose-50/40 pt-24 dark:bg-[#1b1118]">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-24 lg:pt-16">
+        <div className="space-y-8 animate-fade-in-up">
+          <div className="inline-flex items-center rounded-full border border-rose-200 bg-white px-4 py-2 text-sm font-medium text-rose-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-rose-300 hover:shadow-md dark:border-rose-800/70 dark:bg-[#241820] dark:text-rose-200 dark:shadow-rose-950/30">
+            {language === "fr" ? "Disponible pour projets web & mobile" : "Available for web & mobile projects"}
+          </div>
 
-        {/* Decorative dots pattern */}
-        <div className="absolute bottom-32 right-32 flex flex-col gap-2">
-          <div className="w-3 h-3 bg-white/30 rounded-full animate-pulse"></div>
-          <div className="w-3 h-3 bg-white/30 rounded-full animate-pulse delay-200"></div>
-          <div className="w-3 h-3 bg-white/30 rounded-full animate-pulse delay-400"></div>
-        </div>
+          <div className="space-y-5">
+            <h1 className="max-w-3xl text-5xl font-extrabold tracking-tight text-slate-950 dark:text-rose-50 sm:text-6xl lg:text-7xl">
+              {language === "fr" ? (
+                <>
+                  Développeuse Full Stack
+                  <span className="block text-rose-600 dark:text-rose-300">Web & Mobile</span>
+                </>
+              ) : (
+                <>
+                  Full Stack Developer
+                  <span className="block text-rose-600 dark:text-rose-300">Web & Mobile</span>
+                </>
+              )}
+            </h1>
 
-        <div className="absolute top-40 right-40 grid grid-cols-3 gap-2 opacity-20">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <div
-              key={i}
-              className="w-2 h-2 bg-white rounded-sm animate-pulse"
-              style={{ animationDelay: `${i * 100}ms` }}
-            ></div>
-          ))}
-        </div>
-      </div>
+            <p className="max-w-2xl text-lg leading-8 text-slate-600 dark:text-rose-100/75 sm:text-xl">
+              {t.hero.subtitle}
+            </p>
+          </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden animate-scale-in">
-          <div className="grid lg:grid-cols-2 gap-0">
-            {/* Left content section */}
-            <div className="p-8 lg:p-12 flex flex-col justify-center">
-              <div className="space-y-6">
-                <div className="animate-fade-in-up">
-                  <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                    {language === 'fr' ? (
-                      <>
-                        DÉVELOPPEUSE
-                        <br />
-                        <span className="text-amber-600">WEB FULL</span>
-                        <br />
-                        STACK
-                      </>
-                    ) : (
-                      <>
-                        FULL STACK
-                        <br />
-                        <span className="text-amber-600">WEB</span>
-                        <br />
-                        DEVELOPER
-                      </>
-                    )}
-                  </h1>
-                </div>
+          <div className="grid gap-3 text-sm text-slate-600 dark:text-rose-100/80 sm:grid-cols-3 animate-fade-in-up animate-delay-200">
+            <div className="flex items-center gap-2 rounded-lg border border-rose-100 bg-white px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:shadow-md dark:border-rose-900/60 dark:bg-[#241820]">
+              <MapPin className="h-4 w-4 text-rose-500 dark:text-rose-300" />
+              <span>{t.hero.location}</span>
+            </div>
+            <div className="flex items-center gap-2 rounded-lg border border-rose-100 bg-white px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:shadow-md dark:border-rose-900/60 dark:bg-[#241820]">
+              <Phone className="h-4 w-4 text-rose-500 dark:text-rose-300" />
+              <span>{t.hero.phone}</span>
+            </div>
+            <div className="flex items-center gap-2 rounded-lg border border-rose-100 bg-white px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:shadow-md dark:border-rose-900/60 dark:bg-[#241820] sm:col-span-3 lg:col-span-1">
+              <Mail className="h-4 w-4 text-rose-500 dark:text-rose-300" />
+              <span className="truncate">{t.hero.email}</span>
+            </div>
+          </div>
 
-                <div className="animate-fade-in-up animate-delay-200">
-                  <p className="text-lg text-gray-600 leading-relaxed max-w-md">
-                    {t.hero.subtitle}
-                  </p>
-                </div>
+          <div className="flex flex-wrap gap-3 animate-fade-in-up animate-delay-300">
+            {highlights.map((item, index) => (
+              <div
+                key={item.label}
+                className="flex items-center gap-2 rounded-full border border-rose-100 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:text-rose-700 hover:shadow-md dark:border-rose-900/60 dark:bg-[#241820] dark:text-rose-100/85 dark:hover:text-rose-200"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {item.icon}
+                {item.label}
+              </div>
+            ))}
+          </div>
 
-                <div className="space-y-3 animate-fade-in-up animate-delay-300">
-                  <div className="flex items-center gap-3 text-gray-600">
-                    <MapPin className="w-5 h-5 text-amber-600" />
-                    <span>{t.hero.location}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-600">
-                    <Phone className="w-5 h-5 text-amber-600" />
-                    <span>{t.hero.phone}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-600">
-                    <Mail className="w-5 h-5 text-amber-600" />
-                    <span>{t.hero.email}</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-4 animate-fade-in-up animate-delay-400">
+          <div className="flex flex-wrap items-center gap-4 animate-fade-in-up animate-delay-400">
                   <Button
                     size="lg"
-                    className="bg-amber-500 hover:bg-amber-600 text-white rounded-full px-8 hover-lift"
+              className="h-12 rounded-lg bg-rose-600 px-7 text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-rose-700 hover:shadow-lg"
                   >
                     <a href="#projets" className="flex items-center gap-2">
                       {t.hero.viewProjects}
@@ -102,22 +85,22 @@ export function HeroSection() {
                     <Button
                       variant="outline"
                       size="lg"
-                      className="rounded-full border-amber-500 text-amber-500 hover:bg-amber-50 hover-lift bg-transparent"
+                className="h-12 rounded-lg border-rose-200 bg-white px-7 text-rose-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-rose-50 hover:shadow-md dark:border-rose-800/70 dark:bg-transparent dark:text-rose-200 dark:hover:bg-rose-900/30"
                     >
                       <Download className="w-4 h-4 mr-2" />
                       {t.hero.cv}
                     </Button>
                   </a>
-                </div>
+          </div>
 
-                <div className="flex gap-3 animate-fade-in-up animate-delay-500">
+          <div className="flex gap-3 animate-fade-in-up animate-delay-500">
                   <Button
                     variant="ghost"
                     size="sm"
                     asChild
-                    className="w-12 h-12 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 hover-lift"
+              className="h-11 w-11 rounded-lg border border-rose-100 bg-white text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700 hover:shadow-md dark:border-rose-900/60 dark:bg-[#241820] dark:text-rose-100 dark:hover:bg-rose-900/40"
                   >
-                    <a href="https://github.com/fatoumatbinetousylla" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/fatoumatabine" target="_blank" rel="noopener noreferrer">
                       <Github className="w-5 h-5" />
                     </a>
                   </Button>
@@ -125,7 +108,7 @@ export function HeroSection() {
                     variant="ghost"
                     size="sm"
                     asChild
-                    className="w-12 h-12 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 hover-lift"
+              className="h-11 w-11 rounded-lg border border-rose-100 bg-white text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700 hover:shadow-md dark:border-rose-900/60 dark:bg-[#241820] dark:text-rose-100 dark:hover:bg-rose-900/40"
                   >
                     <a
                       href="https://linkedin.com/in/fatoumata-binetou-sylla-264418256"
@@ -139,47 +122,48 @@ export function HeroSection() {
                     variant="ghost"
                     size="sm"
                     asChild
-                    className="w-12 h-12 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 hover-lift"
+              className="h-11 w-11 rounded-lg border border-rose-100 bg-white text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700 hover:shadow-md dark:border-rose-900/60 dark:bg-[#241820] dark:text-rose-100 dark:hover:bg-rose-900/40"
                   >
                     <a href="mailto:fatoumatbinetousylla@gmail.com">
                       <Mail className="w-5 h-5" />
                     </a>
                   </Button>
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
 
-            {/* Right image section */}
-            <div className="relative bg-gradient-to-br from-amber-200 to-orange-600 p-8 lg:p-12 flex items-center justify-center">
-              <div className="relative animate-scale-in animate-delay-300">
-                <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+        <div className="relative animate-fade-in-right">
+          <div className="rounded-2xl border border-rose-100 bg-white p-3 shadow-xl shadow-rose-100/80 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-rose-100 dark:border-rose-900/60 dark:bg-[#241820] dark:shadow-rose-950/40 dark:hover:shadow-rose-950/70">
+            <div className="overflow-hidden rounded-xl border border-rose-100 bg-rose-50 dark:border-rose-900/60 dark:bg-[#2d1e27]">
                   <Image
                     src="/images/Image collée.png"
                     alt="Fatoumata Binetou SYLLA - Développeuse Web Full Stack"
-                    width={400}
-                    height={400}
-                    className="w-full h-full object-cover"
+                width={900}
+                height={1100}
+                className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105"
                     priority
                   />
                 </div>
-
-                {/* Decorative elements around photo */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-white rounded-full animate-pulse"></div>
-                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-white/80 rounded-full animate-pulse delay-500"></div>
-                <div className="absolute top-1/2 -left-8 w-4 h-4 bg-white/60 rotate-45 animate-pulse delay-1000"></div>
+            <div className="grid grid-cols-3 gap-3 border-t border-rose-100 px-2 py-4 text-center dark:border-rose-900/60">
+              <div>
+                <div className="text-2xl font-bold text-rose-600">4+</div>
+                <div className="text-xs text-slate-500 dark:text-rose-100/65">ans exp.</div>
               </div>
-
-              {/* Background decorative elements */}
-              <div className="absolute top-8 right-8 w-20 h-20 border-2 border-white/30 rounded-full animate-spin-slow"></div>
-              <div className="absolute bottom-8 left-8 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
+              <div>
+                <div className="text-2xl font-bold text-rose-600">20+</div>
+                <div className="text-xs text-slate-500 dark:text-rose-100/65">techs</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-rose-600">15+</div>
+                <div className="text-xs text-slate-500 dark:text-rose-100/65">projets</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-          <ArrowDown className="w-5 h-5 text-white" />
+      <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-bounce lg:block">
+        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-rose-100 bg-white shadow-sm dark:border-rose-900/60 dark:bg-[#241820]">
+          <ArrowDown className="w-5 h-5 text-rose-600" />
         </div>
       </div>
     </section>
